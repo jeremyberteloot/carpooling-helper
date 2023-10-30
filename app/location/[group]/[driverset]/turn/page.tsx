@@ -1,8 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-import Link from "next/link";
+import { prisma } from "../../../../prisma";
 import Note from "./Note";
-
-const prisma = new PrismaClient();
 
 export default async function Turn({
   params,

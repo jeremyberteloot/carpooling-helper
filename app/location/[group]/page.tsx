@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
 import DriverSelect from "./DriverSelect";
-
-const prisma = new PrismaClient();
+import { prisma } from "../../prisma";
 
 export default async function DriverList({
   params,

@@ -64,7 +64,6 @@ export default function DriverSelect(props: { drivers: any[]; group: string }) {
             .map((d) => d.id)
             .sort((a, b) => a - b)
             .join("-");
-          console.log(driverset);
           router.push(`/location/${props.group}/${driverset}/turn/`);
         }}
       >
