@@ -12,10 +12,7 @@ interface Driver {
 
 type DriverOrNull = Driver[] | [];
 
-export default function DriverSelect(props: {
-  drivers: Driver[];
-  group: string;
-}) {
+export default function DriverSelect(props: { drivers: any[]; group: string }) {
   const router = useRouter();
   const [selectedDrivers, setSelectedDrivers] = useState<DriverOrNull>([]);
   const driverIsSelected = (d: Driver) => {
