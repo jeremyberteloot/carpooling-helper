@@ -7,10 +7,26 @@ datasource db {
   url = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
- 
+
+model Group {
+  id        String   @id
+  name      String   @unique
+  createdAt DateTime @default(now())
+  drivers   Driver[]
+}
+
 model Driver {
   id        Int      @id @default(autoincrement())
   name      String   @unique
-  group     String
+  turns     Turn[]
+  groups    Group[]
+  createdAt DateTime @default(now())
+}
+
+model Turn {
+  id        Int      @id @default(autoincrement())
+  driverset String   @unique
+  drivers   Driver[]
+  note      String
   createdAt DateTime @default(now())
 }

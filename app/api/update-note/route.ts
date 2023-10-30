@@ -6,16 +6,15 @@ const prisma = new PrismaClient();
 export async function PUT(request: Request) {
   try {
     const data = await request.json();
-    const driver = await prisma.driver.create({
+    const updatedTurn = await prisma.turn.update({
+      where: {
+        id: data.turn,
+      },
       data: {
-        name: data.name,
-        groups: {
-          connect: data.groups.map((group: string) => ({ id: group })),
-        },
+        note: data.note,
       },
     });
-
-    return NextResponse.json({ driver }, { status: 200 });
+    return NextResponse.json({ updatedTurn }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
