@@ -40,15 +40,18 @@ export default function Note(props: {
         </Link>
         <button
           className={`grow flex items-center justify-center font-semibold bg-blue-500 text-sm text-white rounded-lg p-4`}
-          onClick={() =>
+          onClick={() => {
             fetch("/api/update-note", {
               method: "PUT",
               body: JSON.stringify({ turn: props.turnId, note }),
               headers: {
                 "Content-Type": "application/json",
               },
-            })
-          }
+            });
+            setNote("");
+            router.refresh();
+            router.push(`/location/${props.group}`);
+          }}
         >
           Envoyer
         </button>
